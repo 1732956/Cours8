@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnnemiCube : Ennemi {
+public class EnnemiSphere : Ennemi {
     GameObject player;
     public float speed = 5;
     Rigidbody rgb;
@@ -19,7 +19,6 @@ public class EnnemiCube : Ennemi {
 	// Update is called once per frame
 	void Update () {
         FolowPLayer();
-
     }
 
     private void FolowPLayer()
@@ -30,7 +29,9 @@ public class EnnemiCube : Ennemi {
     public override void Die()
     {
         audioSource.PlayOneShot(audioMusic.soundToPlay);
-        Instantiate(particleSystemDeath, gameObject.transform.position, Quaternion.identity);
+        Instantiate(gameObject, gameObject.transform.position, Quaternion.identity);
+        Instantiate(gameObject, gameObject.transform.position + new Vector3(5,0,0), Quaternion.identity);
+        Instantiate(particleSystemDeath, gameObject.transform.position - new Vector3(5, 0, 0), Quaternion.identity);
         Destroy(gameObject);
     }
 }

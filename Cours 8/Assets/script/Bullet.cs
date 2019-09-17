@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour {
     Rigidbody rbd;
-    public int lifeSpan = 3;
+    public int lifeSpan = 10;
     public int bulletSpeed = 1;
     public int bulletDamange = 1;
     private float timeLeftToLive;
@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour {
     public void OnTriggerEnter(Collider otherObject)
     {
         Damagable damagable = otherObject.GetComponentInParent<Damagable>();
-        print("allo");
+      
         if (damagable != null)
         {
             damagable.TakeDamage(bulletDamange);
